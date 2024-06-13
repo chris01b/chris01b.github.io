@@ -29,9 +29,17 @@
   flex: 1;
   margin-bottom: 30px;
 }
+.social-greeting-div {
+  display: flex;
+  justify-content: space-between;;
+  align-items: center;
+}
 .button-greeting-div {
   display: flex;
-  margin-top: 20px;
+  a {
+    margin-top: 0;
+    margin-right: 0;
+  }
 }
 .download-link-button {
   text-decoration: none;
