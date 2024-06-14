@@ -6,6 +6,8 @@
   box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
   border-radius: 10px;
   border: 1px solid $lightBorder1;
+  overflow: hidden;
+  transition: all 0.5s ease;
 }
 
 .experience-card-dark {
@@ -35,6 +37,12 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  transition: height 0.5s ease;
+  z-index: 10; // Higher value than the text details
 }
 
 .experience-blurred_div {
@@ -62,6 +70,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.5s ease;
+}
+.card-expanded .experience-div-company {
+  transform: translateY(-100%); // Move company info up to the banner
+  transition: transform 0.5s ease;
 }
 
 .experience-text-company {
@@ -89,6 +102,14 @@
   height: 8rem;
   box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
   border-radius: 50%;
+  transition: top 0.5s ease
+}
+.card-expanded .experience-roundedimg {
+  top: 1.5rem; // (experience-banner-height / 2) - (experience-roundedimg-height / 2)
+  transition: top 0.5s ease;
+}
+.card-collapsed .experience-roundedimg {
+  top: 7rem; // Reset to original position
 }
 
 .experience-text-role {
@@ -117,8 +138,40 @@
 }
 
 .experience-text-details {
+  position: relative;
+  z-index: 1; // Lower value than the banner
   padding: 1.5rem;
   margin-top: 2rem;
+}
+.card-expanded .experience-text-details {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.card-collapsed .experience-text-details {
+  transform: translateY(0%);
+  opacity: 1;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.vimeo-player {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(100%); // Start hidden below
+  opacity: 0;
+  pointer-events: none; // Disable interaction when hidden
+}
+.vimeo-player.show {
+  transform: translateY(0); // Move to visible position
+  opacity: 1;
+  pointer-events: auto; // Enable interaction when visible
+}
+.vimeo-player.hide {
+  transform: translateY(100%);
+  opacity: 0;
 }
 
 /* Media Query */
@@ -137,6 +190,9 @@
   .experience-roundedimg {
     width: 6.5rem;
     height: 6.5rem;
+  }
+  .card-expanded .experience-roundedimg {
+    top: 2.25rem; // (experience-banner-height / 2) - (experience-roundedimg-height / 2)
   }
 }
 

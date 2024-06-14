@@ -194,7 +194,8 @@ const workExperiences = {
       company: "Nobias",
       companylogo: require("./assets/images/nobiasLogo.png"),
       date: "Jun 2021 – Apr 2022",
-      desc: "Developed and optimized front-end features for a data-driven financial platform, significantly improving the data handling and user interaction."
+      desc: "Developed and optimized front-end features for a data-driven financial platform, significantly improving the data handling and user interaction.",
+      vimeoLink: '705961623'
     },
     {
       role: "Software Engineering Intern",

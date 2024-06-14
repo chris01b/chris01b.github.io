@@ -1,9 +1,12 @@
 import React, {useState, createRef} from "react";
+import Vimeo from '@u-wave/react-vimeo';
 import "./ExperienceCard.scss";
 import ColorThief from "colorthief";
 
 export default function ExperienceCard({cardInfo, isDark}) {
   const [colorArrays, setColorArrays] = useState([]);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [playerReady, setPlayerReady] = useState(false);
   const imgRef = createRef();
 
   function getColorArrays() {
@@ -30,8 +33,18 @@ export default function ExperienceCard({cardInfo, isDark}) {
       : null;
   };
 
+  const handleCardClick = () => {
+    if (cardInfo.vimeoLink) {  // Only toggle expansion if there's a video link.
+      setIsExpanded(prev => !prev);
+    }
+  };
+
   return (
-    <div className={isDark ? "experience-card-dark" : "experience-card"}>
+    <div
+      className={`${isDark ? "experience-card-dark" : "experience-card"} ${isExpanded ? "card-expanded" : "card-collapsed"}`}
+      onClick={handleCardClick}
+      style={{ cursor: cardInfo.vimeoLink ? "pointer" : "default" }}
+    >
       <div style={{background: rgb(colorArrays)}} className="experience-banner">
         <div className="experience-blurred_div"></div>
         <div className="experience-div-company">
@@ -79,6 +92,17 @@ export default function ExperienceCard({cardInfo, isDark}) {
           <GetDescBullets descBullets={cardInfo.descBullets} isDark={isDark} />
         </ul>
       </div>
+      {cardInfo?.vimeoLink && <Vimeo
+        video={cardInfo.vimeoLink}
+        className={`vimeo-player ${isExpanded && playerReady ? 'show' : 'hide'}`}
+        volume={0.01} // avoids showing obstructive unmute button
+        autoplay={isExpanded && playerReady}
+        paused={!isExpanded}
+        dnt
+        responsive
+        onReady={() => setPlayerReady(true)}
+        onError={() => setPlayerReady(false)}
+      />}
     </div>
   );
 }
