@@ -1,8 +1,8 @@
 @import "../../_globalColor";
 
-.experience-card {
+.experience-card, .experience-card-dark {
   position: relative;
-  background-color: $lightBackground2;
+  background-color: $lightBackground2; // Default to light background for light mode
   box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
   border-radius: 10px;
   border: 1px solid $lightBorder1;
@@ -11,14 +11,10 @@
 }
 
 .experience-card-dark {
-  position: relative;
-  background-color: $darkBackground;
-  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
-  border-radius: 10px;
-  border: 1px solid $lightBorder1;
+  background-color: $darkBackground; // Specific background for dark mode
 }
 
-.experience-card:hover {
+.experience-card:hover, .experience-card-dark:hover {
   box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
 }
 
@@ -74,7 +70,6 @@
 }
 .card-expanded .experience-div-company {
   transform: translateY(-100%); // Move company info up to the banner
-  transition: transform 0.5s ease;
 }
 
 .experience-text-company {
@@ -88,6 +83,14 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  opacity: 1;
+}
+.card-expanded .experience-text-company {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.card-collapsed .experience-text-company {
+  opacity: 1;
 }
 
 .experience-roundedimg {
@@ -102,11 +105,10 @@
   height: 8rem;
   box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
   border-radius: 50%;
-  transition: top 0.5s ease
+  transition: top 0.5s ease;
 }
 .card-expanded .experience-roundedimg {
   top: 1.5rem; // (experience-banner-height / 2) - (experience-roundedimg-height / 2)
-  transition: top 0.5s ease;
 }
 .card-collapsed .experience-roundedimg {
   top: 7rem; // Reset to original position
@@ -142,16 +144,15 @@
   z-index: 1; // Lower value than the banner
   padding: 1.5rem;
   margin-top: 2rem;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 .card-expanded .experience-text-details {
   transform: translateY(-100%);
   opacity: 0;
-  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 .card-collapsed .experience-text-details {
   transform: translateY(0%);
   opacity: 1;
-  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .vimeo-player {
