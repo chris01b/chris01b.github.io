@@ -24,13 +24,12 @@ import "./Main.scss";
 const Main = () => {
   const darkPref = window.matchMedia("(prefers-color-scheme: dark)");
   const [isDark, setIsDark] = useLocalStorage("isDark", darkPref.matches);
-  const [isShowingSplashAnimation, setIsShowingSplashAnimation] =
-    useState(true);
+  const [isShowingSplash, setIsShowingSplash] = useState(splashScreen.enabled);
 
   useEffect(() => {
     if (splashScreen.enabled) {
       const splashTimer = setTimeout(
-        () => setIsShowingSplashAnimation(false),
+        () => setIsShowingSplash(false),
         splashScreen.duration
       );
       return () => {
@@ -46,28 +45,25 @@ const Main = () => {
   return (
     <div className={isDark ? "dark-mode" : null}>
       <StyleProvider value={{isDark: isDark, changeTheme: changeTheme}}>
-        {isShowingSplashAnimation && splashScreen.enabled ? (
-          <SplashScreen />
-        ) : (
-          <>
-            <Header />
-            <Greeting />
-            <Skills />
-            <StackProgress />
-            <Education />
-            <WorkExperience />
-            <Projects />
-            <StartupProject />
-            <Achievement />
-            <Blogs />
-            <Talks />
-            <Twitter />
-            <Podcast />
-            <Profile />
-            <Footer />
-            <ScrollToTopButton />
-          </>
-        )}
+      <SplashScreen isVisible={isShowingSplash} />
+        <div className={isShowingSplash ? "hidden-content" : "visible-content"}>
+          <Header />
+          <Greeting />
+          <Skills />
+          <StackProgress />
+          <Education />
+          <WorkExperience />
+          <Projects />
+          <StartupProject />
+          <Achievement />
+          <Blogs />
+          <Talks />
+          <Twitter />
+          <Podcast />
+          <Profile />
+          <Footer />
+          <ScrollToTopButton />
+        </div>
       </StyleProvider>
     </div>
   );

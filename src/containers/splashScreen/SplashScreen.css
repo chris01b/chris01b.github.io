@@ -4,6 +4,23 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.splash-container.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.splash-container.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 .splash-animation-container {
@@ -14,6 +31,7 @@
   font-size: 2.5rem;
   text-decoration: none;
 }
+
 .splash-title {
   font-family: "Agustina Regular", cursive;
   font-weight: bold;

@@ -1,5 +1,17 @@
 @import "../_globalColor";
 
+.hidden-content {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
+.visible-content {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
+
 .dark-mode {
   background-color: $darkBackground;
   color: white;
