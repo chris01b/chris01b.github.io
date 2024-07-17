@@ -34,6 +34,12 @@
     font-size: 40px;
   }
 }
+@media (max-width: 1380px) and (min-width: 768px) {
+  .skills-main-div {
+    display: flex;
+    align-items: center;
+  }
+}
 @media (max-width: 768px) {
   .skills-heading {
     font-size: 30px;

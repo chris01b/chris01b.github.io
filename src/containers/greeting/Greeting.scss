@@ -102,6 +102,12 @@
     font-size: 20px;
   }
 }
+@media (max-width: 1380px) and (min-width: 768px) {
+  .greeting-image-div {
+    display: flex;
+    align-items: center;
+  }
+}
 @media (max-width: 768px) {
   .button-greeting-div {
     justify-content: space-around;
