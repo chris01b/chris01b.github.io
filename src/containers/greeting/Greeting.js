@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Fade} from "react-reveal";
 import emoji from "react-easy-emoji";
 import "./Greeting.scss";
@@ -11,9 +11,29 @@ import StyleContext from "../../contexts/StyleContext";
 
 export default function Greeting() {
   const {isDark} = useContext(StyleContext);
+  const [resumeLink, setResumeLink] = useState(null);
+
+  useEffect(() => {
+    fetch('./resume.pdf')
+      .then((response) => {
+        if (response.ok) {
+          setResumeLink('./resume.pdf');
+        } else {
+          if (greeting.resumeLink) {
+            console.error("Resume not found");
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error checking for resume:", error);
+      });
+  }, []);
+
+
   if (!greeting.displayGreeting) {
     return null;
   }
+
   return (
     <Fade bottom duration={1000} distance="40px">
       <div className="greet-main" id="greeting">
@@ -42,7 +62,7 @@ export default function Greeting() {
                   <Button text="Contact me" href="#contact" />
                   {greeting.resumeLink && (
                     <a
-                      href={require("./resume.pdf")}
+                      href={resumeLink}
                       download="Resume.pdf"
                       className="download-link-button"
                     >
