@@ -39,3 +39,15 @@
   -webkit-font-variant-ligatures: no-common-ligatures;
   padding: 0 20px;
 }
+
+/* Media Query */
+@media (max-width: 768px) {
+  .splash-title-container {
+    font-size: 1.25rem;
+  }
+}
+@media (max-width: 320px) {
+  .splash-title-container {
+    font-size: 1rem;
+  }
+}
