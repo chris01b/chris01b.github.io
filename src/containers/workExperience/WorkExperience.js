@@ -27,7 +27,8 @@ export default function WorkExperience() {
                         companylogo: card.companylogo,
                         role: card.role,
                         descBullets: card.descBullets,
-                        vimeoLink: card.vimeoLink
+                        vimeoLink: card.vimeoLink,
+                        link: card.link
                       }}
                     />
                   );

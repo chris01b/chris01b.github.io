@@ -187,7 +187,8 @@ const workExperiences = {
       company: "Grapevine Technologies",
       companylogo: require("./assets/images/grapevineLogo.jpg"),
       date: "Jun 2022 – Aug 2022",
-      desc: "Led the development of complex front-end functionalities for an e-commerce platform, focusing on enhancing UX and load times, successfully reducing response times by up to 20%."
+      desc: "Led the development of complex front-end functionalities for an e-commerce platform, focusing on enhancing UX and load times, successfully reducing response times by up to 20%.",
+      link: "https://www.go-grapevine.com/"
     },
     {
       role: "Software Engineering Intern",
@@ -202,7 +203,8 @@ const workExperiences = {
       company: "Aegis Software",
       companylogo: require("./assets/images/aegisLogo.jpg"),
       date: "Jun 2019 – Aug 2019",
-      desc: "Enhanced machine-to-machine communication standards and compliance testing processes, significantly cutting down operational timelines."
+      desc: "Enhanced machine-to-machine communication standards and compliance testing processes, significantly cutting down operational timelines.",
+      link: "https://www.aiscorp.com/solutions/regulatory-customer-compliance/"
     }
   ]
 };

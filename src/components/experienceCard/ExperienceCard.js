@@ -34,7 +34,9 @@ export default function ExperienceCard({cardInfo, isDark}) {
   };
 
   const handleCardClick = () => {
-    if (cardInfo.vimeoLink) {  // Only toggle expansion if there's a video link.
+    if (cardInfo.link) {
+      window.open(cardInfo.link, '_blank');
+    } else if (cardInfo.vimeoLink) {
       setIsExpanded(prev => !prev);
     }
   };
@@ -43,7 +45,7 @@ export default function ExperienceCard({cardInfo, isDark}) {
     <div
       className={`${isDark ? "experience-card-dark" : "experience-card"} ${isExpanded ? "card-expanded" : "card-collapsed"}`}
       onClick={handleCardClick}
-      style={{ cursor: cardInfo.vimeoLink ? "pointer" : "default" }}
+      style={{ cursor: cardInfo.vimeoLink || cardInfo.link ? "pointer" : "default" }}
     >
       <div style={{background: rgb(colorArrays)}} className="experience-banner">
         <div className="experience-blurred_div"></div>
